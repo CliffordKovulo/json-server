@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .product {
+      border: 1px solid #ddd;
+      width: 50%;
+      background-color: aquamarine;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Available Products</h1>
+  <div id="products-container"></div>
+
+  <script>
+    // Fetch products from JSON server and display them
+    fetch('http://localhost:3000/products')
+      .then(response => response.json())
+      .then(products => {
+        const productsContainer = document.getElementById('products-container');
+        
+        products.forEach(product => {
+          const productDiv = document.createElement('div');
+          productDiv.classList.add('product');
+          
+          productDiv.innerHTML = `
+            <h2>${product.name}</h2>
+            <p><strong>Description:</strong> ${product.description}</p>
+            <p><strong>Category:</strong> ${product.category}</p>
+            <p><strong>Price:</strong> $${product.price}</p>
+            <p><strong>In Stock:</strong> ${product.stock}</p>
+          `;
+          
+          productsContainer.appendChild(productDiv);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching products:', error);
+      });
+  </script>
+</body>
+</html>
