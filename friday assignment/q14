@@ -1,0 +1,11 @@
+function getAllValues(obj) {
+  return Object.values(obj);
+}
+
+let exampleObject = {
+  name: "John",
+  age: 30,
+  profession: "Developer"
+};
+
+console.log(getAllValues(exampleObject));

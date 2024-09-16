@@ -1,0 +1,17 @@
+function getAllProperties(obj) {
+  let props = [];
+
+  while (obj) {
+    props = props.concat(Object.getOwnPropertyNames(obj));
+    obj = Object.getPrototypeOf(obj);
+  }
+
+  return [...new Set(props)]; 
+}
+
+let exampleObject = {
+  name: "John",
+  age: 30
+};
+
+console.log(getAllProperties(exampleObject));

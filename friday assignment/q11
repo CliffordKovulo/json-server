@@ -1,0 +1,15 @@
+function all_properties(obj) {
+    let properties = [];
+  
+    properties = Object.getOwnPropertyNames(obj);
+  
+    const prototype = Object.getPrototypeOf(obj);
+    if (prototype) {
+      properties = properties.concat(Object.getOwnPropertyNames(prototype));
+    }
+  
+    return properties;
+  }
+  
+  console.log(all_properties(Array));
+  

@@ -1,0 +1,18 @@
+function parseURL(url) {
+    let a = new URL(url);
+    let queryParams = Object.fromEntries(new URLSearchParams(a.search));
+  
+    return {
+      protocol: a.protocol,
+      host: a.host,
+      hostname: a.hostname,
+      port: a.port,
+      pathname: a.pathname,
+      search: a.search,
+      hash: a.hash,
+      queryParams: queryParams
+    };
+  }
+  
+  let parsedURL = parseURL('https://www.google.com:8080/search?q=JavaScript&lang=en#top');
+  console.log(parsedURL);  
